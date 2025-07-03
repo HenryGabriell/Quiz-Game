@@ -8,8 +8,9 @@
 }
 
 body {
-  /* background: #2a1946fd; */
-  background: linear-gradient(#febf5a, #ab4dfea4);
+  background: linear-gradient(135deg, #4e07e7, #ffcc00, #4e07e7, #4e07e7, #ffcc00, #4e07e7, #4e07e7, #ffcc00, #4e07e7, #4e07e7, #ffcc00, #4e07e7); 
+  /* background: linear-gradient(135deg, #4e07e7, #ffcc00); */
+
   display: flex;
   justify-content: center;
   align-items: center;
