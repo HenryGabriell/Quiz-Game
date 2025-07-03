@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Comfortaa:wght@300..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
 * {
   margin: 0;
   padding: 0;
@@ -6,14 +9,13 @@
 
 body {
   /* background: #2a1946fd; */
-  /* background: linear-gradient(#2a1946fd, #3b05ffbb); */
   background: linear-gradient(#febf5a, #ab4dfea4);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 1rem;
-  font-family: sans-serif;
+  font-family: "Comfortaa", "Exo 2", sans-serif;
 }
 
 .container {
