@@ -5,7 +5,9 @@
 }
 
 body {
-  background: #f5efe6;
+  /* background: #2a1946fd; */
+  /* background: linear-gradient(#2a1946fd, #3b05ffbb); */
+  background: linear-gradient(#febf5a, #ab4dfea4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +18,7 @@ body {
 
 .container {
   background-color: white;
-  border-radius: 1rem;
+  border-radius: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 600px;
@@ -37,7 +39,7 @@ body {
 
 /* START SCREEN */
 #start-screen h1 {
-  color: #e86a33;
+  color: #ff962d;
   margin-bottom: 20px;
   font-size: 2.5rem;
 }
@@ -110,14 +112,14 @@ body {
 
 .progress {
   height: 100%;
-  background-color: #e86a33;
+  background-color: #6a1de6c2;
   width: 0%;
   transition: width 0.3s ease;
 }
 
 /* RESULT SCREEN */
 #result-screen h1 {
-  color: #e86a33;
+  color: #ff962d;
   margin-bottom: 30px;
 }
 
@@ -130,18 +132,18 @@ body {
 
 .result-info p {
   font-size: 1.2rem;
-  color: #333;
+  color: #17d402;
   margin-bottom: 1rem;
 }
 
 #result-message {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #e86a33;
+  color: #ff962d;
 }
 
 button {
-  background-color: #e86a33;
+  background-color: #ff962d;
   color: white;
   border-radius: 10px;
   border: none;
