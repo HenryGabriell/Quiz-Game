@@ -15,54 +15,53 @@ const restartButton = document.getElementById("restart-btn");
 const progressBar = document.getElementById("progress");
 
 const quizQuestions = [
-    {
-        question: "Qual é a capital da França?",
-        answers: [
-            { text: "Londres", correct: false },
-            { text: "Berlim", correct: false },
-            { text: "Paris", correct: true },
-            { text: "Madri", correct: false },
-        ],
-    },
-    {
-        question: "Qual planeta é conhecido como o planeta vermelho?",
-        answers: [
-            { text: "Vênus", correct: false },
-            { text: "Marte", correct: true },
-            { text: "Júpiter", correct: false },
-            { text: "Saturno", correct: false },
-        ],
-    },
-    {
-        question: "Qual é o maior oceano do mundo?",
-        answers: [
-            { text: "Oceano Atlântico", correct: false },
-            { text: "Oceano Pacífico", correct: true },
-            { text: "Oceano Ártico", correct: false },
-            { text: "Oceano Índico", correct: false },
-        ],
-    },
-    {
-        question: "Qual desses NÃO é uma linguagem de programação?",
-        answers: [
-            { text: "Java", correct: false },
-            { text: "Python", correct: false },
-            { text: "HTML", correct: true },
-            { text: "JavaScript", correct: false },
-        ],
-    },
-    {
-        question: "Quem escreveu a peça Romeu e Julieta?",
-        answers: [
-            { text: "William Shakespeare", correct: true },
-            { text: "Machado de Assis", correct: false },
-            { text: "Clarice Lispector", correct: false },
-            { text: "José de Alencar", correct: false },
-        ],
-    },
+  {
+    question: "Qual é a capital da França?",
+    answers: [
+      { text: "Londres", correct: false },
+      { text: "Berlim", correct: false },
+      { text: "Paris", correct: true },
+      { text: "Madri", correct: false },
+    ],
+  },
+  {
+    question: "Qual planeta é conhecido como o planeta vermelho?",
+    answers: [
+      { text: "Vênus", correct: false },
+      { text: "Marte", correct: true },
+      { text: "Júpiter", correct: false },
+      { text: "Saturno", correct: false },
+    ],
+  },
+  {
+    question: "Qual é o maior oceano do mundo?",
+    answers: [
+      { text: "Oceano Atlântico", correct: false },
+      { text: "Oceano Pacífico", correct: true },
+      { text: "Oceano Ártico", correct: false },
+      { text: "Oceano Índico", correct: false },
+    ],
+  },
+  {
+    question: "Qual desses NÃO é uma linguagem de programação?",
+    answers: [
+      { text: "Java", correct: false },
+      { text: "Python", correct: false },
+      { text: "HTML", correct: true },
+      { text: "JavaScript", correct: false },
+    ],
+  },
+  {
+    question: "Quem escreveu a peça Romeu e Julieta?",
+    answers: [
+      { text: "William Shakespeare", correct: true },
+      { text: "Machado de Assis", correct: false },
+      { text: "Clarice Lispector", correct: false },
+      { text: "José de Alencar", correct: false },
+    ],
+  },
 ];
 
-// Variáveis de controle do quiz
 let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
@@ -70,46 +69,92 @@ let answersDisabled = false;
 totalQuestionsSpan.textContent = quizQuestions.length;
 maxScoreSpan.textContent = quizQuestions.length;
 
-// Eventos
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", restartQuiz);
 
-// Funções
 function startQuiz() {
-    // reset vars
-    currentQuestionIndex = 0;
-    scoreSpan.textContent = 0;
+  currentQuestionIndex = 0;
+  score = 0;
+  scoreSpan.textContent = 0;
 
-    startScreen.classList.remove("active");
-    quizScreen.classList.add("active");
+  startScreen.classList.remove("active");
+  resultScreen.classList.remove("active");
+  quizScreen.classList.add("active");
 
-    showQuestion()
+  showQuestion();
 }
 
-function showQuestion(){
-    //reset state
-    answersDisabled = false;
-    const currentQuestion = quizQuestions[currentQuestionIndex]
-    currentQuestionSpan.textContent = currentQuestionIndex + 1
-    const progressPercent = (currentQuestion / quizQuestions.length) * 100;
-    progressBar.style.width = progressPercent + "%"
-    questionText.textContent = currentQuestio.question
+function showQuestion() {
+  answersDisabled = false;
+  const currentQuestion = quizQuestions[currentQuestionIndex];
+  currentQuestionSpan.textContent = currentQuestionIndex + 1;
+  const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100;
+  progressBar.style.width = progressPercent + "%";
+  questionText.textContent = currentQuestion.question;
 
-    answersContainer.innerHTML = "";
+  answersContainer.innerHTML = "";
 
-    currentQuestion.answers.forEach((answer) =>{
-        const button = document.createElement("button");
-        button.textContent = answer.text;
-        button.classList.add("answer-btn");
+  currentQuestion.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.textContent = answer.text;
+    button.classList.add("answers-btn");
+    button.dataset.correct = answer.correct;
+    button.addEventListener("click", selectAnswer);
+    answersContainer.appendChild(button);
+  });
+}
 
-        button.dataset.correct = answer.correct;
+function selectAnswer(event) {
+  if (answersDisabled) return;
+  answersDisabled = true;
 
-        button.addEventListener("click", selectAnswer);
+  const selectedButton = event.target;
+  const isCorrect = selectedButton.dataset.correct === "true";
 
-        answersContainer.appendChild(button);
-    });
+  Array.from(answersContainer.children).forEach((button) => {
+    if (button.dataset.correct === "true") {
+      button.classList.add("correct");
+    } else if (button === selectedButton) {
+      button.classList.add("incorrect");
+    }
+  });
+
+  if (isCorrect) {
+    score++;
+    scoreSpan.textContent = score;
+  }
+
+  setTimeout(() => {
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < quizQuestions.length) {
+      showQuestion();
+    } else {
+      showResults();
+    }
+  }, 1000);
+}
+
+function showResults() {
+  quizScreen.classList.remove("active");
+  resultScreen.classList.add("active");
+
+  finalScoreSpan.textContent = score;
+
+  const percentage = (score / quizQuestions.length) * 100;
+
+  if (percentage === 100) {
+    resultMessage.textContent = "Perfeito! Ótimo trabalho";
+  } else if (percentage >= 60) {
+    resultMessage.textContent = "Boa tentativa. Continue estudando!";
+  } else if (percentage >= 40) {
+    resultMessage.textContent = "Ééé... Tente novamente";
+  } else {
+    resultMessage.textContent = "Tente novamente!!!";
+  }
 }
 
 function restartQuiz() {
-    console.log("quiz re-started");
+  resultScreen.classList.remove("active");
+  startQuiz();
 }
