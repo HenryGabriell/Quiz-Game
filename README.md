@@ -8,7 +8,7 @@ O  Quiz tem perguntas aleatórias e apresenta respostas de múltipla escolha, co
 O design é responsivo e utiliza transições suaves, com foco na usabilidade e clareza. Todo o projeto foi construído sem frameworks, ideal para fins educacionais, prática de lógica, DOM manipulation e controle de fluxo em JavaScript.
 <br>
 <br>
-Da uma olhada:
+Da uma olhada: https://henrygabriell.github.io/Quiz-Game/
 <hr>
 <img width="596" src="https://github.com/user-attachments/assets/78d4af38-379b-4b80-917e-c7db0b66229f">
 <br>
