@@ -76,7 +76,38 @@ restartButton.addEventListener("click", restartQuiz);
 
 // Funções
 function startQuiz() {
-    console.log("quiz started");
+    // reset vars
+    currentQuestionIndex = 0;
+    scoreSpan.textContent = 0;
+
+    startScreen.classList.remove("active");
+    quizScreen.classList.add("active");
+
+    showQuestion()
+}
+
+function showQuestion(){
+    //reset state
+    answersDisabled = false;
+    const currentQuestion = quizQuestions[currentQuestionIndex]
+    currentQuestionSpan.textContent = currentQuestionIndex + 1
+    const progressPercent = (currentQuestion / quizQuestions.length) * 100;
+    progressBar.style.width = progressPercent + "%"
+    questionText.textContent = currentQuestio.question
+
+    answersContainer.innerHTML = "";
+
+    currentQuestion.answers.forEach((answer) =>{
+        const button = document.createElement("button");
+        button.textContent = answer.text;
+        button.classList.add("answer-btn");
+
+        button.dataset.correct = answer.correct;
+
+        button.addEventListener("click", selectAnswer);
+
+        answersContainer.appendChild(button);
+    });
 }
 
 function restartQuiz() {
