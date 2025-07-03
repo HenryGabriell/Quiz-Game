@@ -47,17 +47,62 @@ const quizQuestions = [
     answers: [
       { text: "Java", correct: false },
       { text: "Python", correct: false },
-      { text: "HTML", correct: true },
+      { text: "Windows", correct: true },
       { text: "JavaScript", correct: false },
     ],
   },
   {
-    question: "Quem escreveu a peça Romeu e Julieta?",
+    question: "Quantos continentes existem no mundo?",
     answers: [
-      { text: "William Shakespeare", correct: true },
-      { text: "Machado de Assis", correct: false },
-      { text: "Clarice Lispector", correct: false },
-      { text: "José de Alencar", correct: false },
+      { text: "5", correct: false },
+      { text: "6", correct: false },
+      { text: "7", correct: true },
+      { text: "8", correct: false },
+    ],
+  },
+  {
+    question: "Quem foi o primeiro presidente do Brasil?",
+    answers: [
+      { text: "Dom Pedro II", correct: false },
+      { text: "Getúlio Vargas", correct: false },
+      { text: "Juscelino Kubitschek", correct: false },
+      { text: "Deodoro da Fonseca", correct: true },
+    ],
+  },
+  {
+    question: "Qual animal representa a Austrália?",
+    answers: [
+      { text: "Urso polar", correct: false },
+      { text: "Canguru", correct: true },
+      { text: "Anta", correct: false },
+      { text: "Avestruz", correct: false },
+    ],
+  },
+  {
+    question: "Como é chamado o processo das plantas que produzem seu próprio alimento?",
+    answers: [
+      { text: "Respiração celular", correct: false },
+      { text: "Germinação", correct: false },
+      { text: "Transpiração", correct: false },
+      { text: "Fotossíntese", correct: true },
+    ],
+  },
+  {
+    question: "Quem dirigiu o filme “Titanic”?",
+    answers: [
+      { text: "James Cameron", correct: true },
+      { text: "Martin Scorsese", correct: false },
+      { text: "Quentin Tarantino", correct: false },
+      { text: "Steven Spielberg", correct: false },
+    ],
+  },
+  {
+    question: "Quem fundou a Microsoft?",
+    answers: [
+      { text: "Steve Jobs", correct: false },
+      { text: "Bill Gates ", correct: true },
+      { text: "Elon Musk", correct: false },
+      { text: "Jeff Bezos", correct: false },
     ],
   },
 ];
